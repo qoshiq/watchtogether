@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} — Room {{ room_code }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main class="container container-wide">
+        <header class="room-header">
+            <div>
+                <p class="eyebrow">{{ app_name }}</p>
+                <h1>Room: <span class="room-code" id="room-code">{{ room_code }}</span></h1>
+            </div>
+            <button type="button" class="btn btn-ghost" id="copy-code-btn" data-code="{{ room_code }}">
+                Copy code
+            </button>
+        </header>
+
+        <section class="video-section">
+            {% if missing_video %}
+            <div class="video-placeholder message message-error">
+                <p>Video unavailable.</p>
+                <p class="muted">The file <code>{{ video_file }}</code> could not be found on the server.</p>
+            </div>
+            {% else %}
+            <video controls preload="metadata" class="video-player">
+                <source src="{{ video_url }}" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            {% endif %}
+        </section>
+
+        <footer class="room-footer">
+            <a href="/" class="btn btn-secondary">Leave Room</a>
+        </footer>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

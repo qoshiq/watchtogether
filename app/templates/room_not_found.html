@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} — Room not found</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="hero">
+            <h1>{{ app_name }}</h1>
+        </header>
+
+        <section class="card message message-error">
+            <p>Room not found.</p>
+            {% if room_code %}
+            <p class="muted">No room exists with code <strong>{{ room_code }}</strong>.</p>
+            {% endif %}
+        </section>
+
+        <a href="/" class="btn btn-secondary">Back to home</a>
+    </main>
+</body>
+</html>

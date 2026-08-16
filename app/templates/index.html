@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="hero">
+            <h1>{{ app_name }}</h1>
+            <p class="subtitle">Watch movies together with your friends.</p>
+        </header>
+
+        {% if error == "empty_code" %}
+        <p class="message message-error" role="alert">Please enter a room code.</p>
+        {% elif error == "not_found" %}
+        <p class="message message-error" role="alert">Room not found.</p>
+        {% endif %}
+
+        <section class="card">
+            <form action="/rooms" method="post">
+                <button type="submit" class="btn btn-primary btn-block">Create Room</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2 class="section-title">Join a room</h2>
+            <form action="/rooms/join" method="post" class="join-form">
+                <label for="room_code">Room code</label>
+                <input
+                    type="text"
+                    id="room_code"
+                    name="room_code"
+                    placeholder="e.g. A7K92"
+                    maxlength="10"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                >
+                <button type="submit" class="btn btn-secondary btn-block">Join Room</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
